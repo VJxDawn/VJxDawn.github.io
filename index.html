@@ -1,0 +1,207 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vihaan Jain's portfolio showcasing projects, skills, and experiences as a Computer Science student at VJTI Mumbai.">
+  <meta name="keywords" content="Vihaan Jain, portfolio, computer science, web development, AI, VJTI, programmer">
+  <meta name="author" content="Vihaan Jain">
+  <!-- Open Graph Meta Tags for SEO -->
+  <meta property="og:title" content="Vihaan's Portfolio">
+  <meta property="og:description" content="Portfolio of Vihaan Jain, a Electrical Engineering student at VJTI Mumbai, showcasing projects, skills, and experiences.">
+  <meta property="og:image" content="images/portfolio-og-image.jpg">
+  <meta property="og:url" content="https://vihaan.dev">
+  <meta property="og:type" content="website">
+  <title>Vihaan's Portfolio</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <p class="loader-text" id="loader-text"></p>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+  </div>
+
+  <header>
+    <div class="header-left">
+      <div class="nav-button" id="navIcon">☰</div>
+    </div>
+    <div class="header-center">
+      <div class="header-title" id="header-title">Vihaan's Portfolio</div>
+    </div>
+    <div class="header-right">
+      <div class="header-links-right">
+        <a id="header-email-link" target="_blank"><svg aria-label="Email Icon" viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.7l-8 5.334L4 8.7V6l8 5.334L20 6v2.7z"/></svg></a>
+        <a id="header-github-link" target="_blank"><svg aria-label="GitHub Icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.38-1.96 1-2.65-.1-.25-.45-1.25.1-2.61 0 0 .83-.26 2.72 1.01A9.37 9.37 0 0 1 12 6.81c.85 0 1.71.11 2.52.33 1.89-1.27 2.72-1.01 2.72-1.01.55 1.36.2 2.36.1 2.61.62.69 1 1.57 1 2.65 0 3.82-2.34 4.66-4.56 4.92.36.31.67.94.67 1.9v2.81c0 .27.16.58.67.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg></a>
+        <a id="header-linkedin-link" target="_blank"><svg aria-label="LinkedIn Icon" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.024-3.037-1.85-3.037-1.85 0-2.132 1.447-2.132 2.94v5.666H9.354V9h3.414v1.561h.048c.476-.9 1.637-1.85 3.37-1.85 3.6 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.8 0 0 .8 0 1.771v20.457C0 23.2.8 24 1.771 24h20.452C23.2 24 24 23.2 24 22.229V1.771C24 .8 23.2 0 22.225 0z"/></svg></a>
+       <a href="https://leetcode.com/u/VJxDawn/" target="_blank" style="display: flex; align-items: center;">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="24" height="24" fill="#7e57c2"/>
+      <path d="M6 4h3v12H6V4zm0 14h12v2H6v-2zm9-14h3v8h-3V4zm0 10h3v2h-3v-2z" fill="#FFFFFF"/>
+    </svg>
+  </a>
+      </div>
+     
+      <div class="toggle-mode" id="modeBtn">Dark Mode</div>
+    </div>
+  </header>
+
+  <nav class="sidebar" id="sidebar">
+    <ul id="sidebar-menu">
+      <!-- Sidebar links will be dynamically generated with SVGs -->
+    </ul>
+  </nav>
+
+  <div class="container" id="mainContainer">
+    <div class="header">
+  
+   <div class="profile-pic">
+  <img src="purple.png" alt="Profile Picture" class="profile-img" onerror="this.style.display='none'; this.parentNode.innerHTML = 'V';">
+</div>
+
+      <div class="profile-info">
+        <h1>Vihaan Jain</h1>
+        <div class="subtitle">Electrical Engineering Student @ VJTI</div>
+     <div style="display: flex; justify-content: left; margin-top: 15px;">
+  <a href="Vihaan_Jain_Resume.pdf" target="_blank" class="toggle-mode" id="contact-cv-link" download style="display: flex; align-items: center; background-color: #7e57c2; color: white; font-size: 17px; font-weight: 600; padding: 8px 16px; border-radius: 20px; text-decoration: none;">
+        <svg aria-label="Download Icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; margin-right: 8px; fill: white;"><path d="M12 16l-6-6h4V4h4v6h4l-6 6zm-6 2v2h12v-2H6z"/></svg>
+        Download CV
+      </a>
+</div>
+      </div>
+        </div>
+
+    <section id="about">
+      <h2><svg aria-label="About Icon" class="section-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> About</h2>
+      <p>I’m a first-year EE student at VJTI Mumbai, passionate about AI, web development, and open source. I enjoy building tools that solve real-world problems and continuously learning new technologies.</p>
+    </section>
+
+    <section id="interests">
+      <h2><svg aria-label="Interests Icon" class="section-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg> Interests</h2>
+      <ul>
+        <li>Machine Learning</li>
+        <li>Full Stack Development</li>
+        <li>Cybersecurity</li>
+        <li>Data Visualization</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+      <h2><svg aria-label="Projects Icon" class="section-icon" viewBox="0 0 24 24"><path d="M9 3v2H5v14h14v-4h2v6H3V3h6zm8 2h-2v2h-2v2h-2v2h-2v2h2v2h2v2h2v-2h2v-2h2v-2h-2v-2h-2V5z"/></svg> Projects</h2>
+      <div id="projects-container" class="project-grid"></div>
+    </section>
+
+    <section id="skills">
+      <h2><svg aria-label="Skills Icon" class="section-icon" viewBox="0 0 24 24"><path d="M7 3v2h10V3H7zm0 4v2h10V7H7zm0 4v2h10v-2H7zm-2 6h14v2H5v-2z"/></svg> Skills & Proficiency</h2>
+      <div class="tech-stack" id="tech-stack"></div>
+      <div class="skills-stats-container">
+        <div id="skills-progress-container" class="skill-progress"></div>
+        <div class="github-stats">
+         <img src="https://github-readme-stats.vercel.app/api?username=VJxDawn&show_icons=true&bg_color=00000000&title_color=7e57c2&text_color=7e57c2&icon_color=9575cd&border_color=7e57c2">
+ </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2><svg aria-label="Education Icon" class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="#6B5B95" stroke-width="2"><path d="M5 5h14v12H5c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm7 0v12"/></svg> Education</h2>
+      <p>B.Tech in Electrical Enginenering first-year, VJTI Mumbai (2025–2029, CGPA: 9.3/10)</p>
+    </section>
+
+    <section id="timeline">
+      <h2><svg aria-label="Timeline Icon" class="section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <path d="M2 12h20" stroke-linecap="round"/>
+  <circle cx="6" cy="12" r="2" fill="currentColor"/>
+  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+  <circle cx="18" cy="12" r="2" fill="currentColor"/>
+</svg>Timeline</h2>
+      <div class="timeline">
+        <div>2018: Discovered coding through Scratch at a school exhibition, building a project that earned appreciation.</div>
+        <div>2020: Explored web development during lockdown, learned Python, HTML/CSS and JavaScript, freelanced (earned ~₹15,000 INR), and created a verified Discord bot serving 2,500+ servers.</div>
+        <div>2025: Gave JEE and other Engineering Entrence Exams.</div>
+        <div class="current">2025: Started B.Tech in Computer Science at VJTI Mumbai.</div>
+        </div>
+    </section>
+
+    <section id="awards">
+      <h2><svg aria-label="Awards Icon" class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="#6B5B95" stroke-width="2"><path d="M12 2l3 6h6l-3 6 3 6h-6l-3 6-3-6H3l3-6-3-6h6z"/><circle cx="12" cy="12" r="2"/></svg> Awards & Achievements</h2>
+      <div id="awards-container"></div>
+    </section>
+
+    <section id="certifications">
+      <h2><svg aria-label="Certifications Icon" class="sidebar-icon" viewBox="0 0 24 24"><path fill="#FFFFFF" stroke="#6B5B95" stroke-width="2" d="M18 4H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM8 8h8m-8 3h8m-8 3h8"/></svg> Certifications</h2>
+      <div id="certifications-container"></div>
+    </section>
+
+    <section id="experience">
+      <h2><svg aria-label="Experience Icon" class="sidebar-icon" viewBox="0 0 24 24"><path fill="#FFFFFF" stroke="#6B5B95" stroke-width="2" d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 14H4V8h16v10z"/></svg> Experience</h2>
+      <div id="experiences-container"></div>
+    </section>
+
+    <section id="contact">
+      <h2><svg aria-label="Contact Icon" class="sidebar-icon" viewBox="0 0 24 24"><path fill="#6B5B95" d="M20 2H4c-1.1 0-2 .9-2 2v16l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"/></svg> Contact</h2>
+      <div class="buttons">
+        <a id="contact-email-link">Email</a>
+        <a id="contact-linkedin-link">LinkedIn</a>
+     </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXXXX-X');
+  </script>
+</body>
+</html>
