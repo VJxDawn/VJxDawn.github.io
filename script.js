@@ -11,33 +11,33 @@ document.addEventListener('DOMContentLoaded', () => {
       leetcode: "https://leetcode.com/u/VJxDawn/"
     },
     sidebarLinks: {
-      about: { url: "#about", icon: '<svg aria-label="About Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>' },
-      interests: { url: "#interests", icon: '<svg aria-label="Interests Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>' },
-      projects: { url: "#projects", icon: '<svg aria-label="Projects Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M9 3v2H5v14h14v-4h2v6H3V3h6zm8 2h-2v2h-2v2h-2v2h-2v2h2v2h2v2h2v-2h2v-2h2v-2h-2v-2h-2V5z"/></svg>' },
-      skills: { url: "#skills", icon: '<svg aria-label="Skills Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M7 3v2h10V3H7zm0 4v2h10V7H7zm0 4v2h10v-2H7zm-2 6h14v2H5v-2z"/></svg>' },
+      about: { url: "#about", icon: '<svg aria-label="About Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4" /><path d="M12 12c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>' },
+      interests: { url: "#interests", icon: '<svg aria-label="Interests Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>' },
+      projects: { url: "#projects", icon: '<svg aria-label="Projects Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM9 9l6 6m0-6l-6 6"/></svg>' },
+      skills: { url: "#skills", icon: '<svg aria-label="Skills Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>' },
       education: { 
         url: "#education", 
-        icon: '<svg aria-label="Education Icon" class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M5 5h14v12H5c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm7 0v12"/></svg>' 
+        icon: '<svg aria-label="Education Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5h14v12H5c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm7 0v12"/></svg>' 
       },
       timeline: { 
         url: "#timeline", 
-        icon: '<svg aria-label="Timeline Icon" class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M2 12h20" stroke-linecap="round"/><circle cx="6" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="18" cy="12" r="2" fill="currentColor"/></svg>'
+        icon: '<svg aria-label="Timeline Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20" stroke-linecap="round"/><circle cx="6" cy="12" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="18" cy="12" r="2" /></svg>'
       },
       awards: { 
         url: "#awards", 
-        icon: '<svg aria-label="Awards Icon" class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 2l3 6h6l-3 6 3 6h-6l-3 6-3-6H3l3-6-3-6h6z"/><circle cx="12" cy="12" r="2"/></svg>' 
+        icon: '<svg aria-label="Awards Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6h6l-3 6 3 6h-6l-3 6-3-6H3l3-6-3-6h6z"/><circle cx="12" cy="12" r="2"/></svg>' 
       },
       certifications: { 
         url: "#certifications", 
-        icon: '<svg aria-label="Certifications Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" stroke="currentColor" stroke-width="2" d="M18 4H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM8 8h8m-8 3h8m-8 3h8"/></svg>' 
+        icon: '<svg aria-label="Certifications Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 4H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM8 8h8m-8 3h8m-8 3h8"/></svg>' 
       },
       experience: { 
         url: "#experience", 
-        icon: '<svg aria-label="Experience Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" stroke="currentColor" stroke-width="2" d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 14H4V8h16v10z"/></svg>' 
+        icon: '<svg aria-label="Experience Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 14H4V8h16v10z"/></svg>' 
       },
       contact: { 
         url: "#contact", 
-        icon: '<svg aria-label="Contact Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M20 2H4c-1.1 0-2 .9-2 2v16l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"/></svg>' 
+        icon: '<svg aria-label="Contact Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 2H4c-1.1 0-2 .9-2 2v16l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"/></svg>' 
       } 
     },
     projectLinks: {
@@ -51,14 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
       aiChatbot: {
         github: "https://github.com/vihaanjain/ai-chatbot",
         demo: "https://vihaan.dev/ai-chatbot-demo",
-        screenshot: "images/ai-chatbot.jpg",
+        screenshot: "https://via.placeholder.com/300x200.png?text=AI+Chatbot+Screenshot",
         description: "An AI-powered chatbot built with Python and NLP libraries.",
         tech: "Python, NLTK, Flask"
       },
       librarySystem: {
         github: "https://github.com/vihaanjain/library-system",
         demo: "https://vihaan.dev/library-system-demo",
-        screenshot: "images/library-system.jpg",
+        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
         description: "A library management system with a user-friendly interface.",
         tech: "React, Node.js, MongoDB"
       }
@@ -187,6 +187,24 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Preloader element not found. Check if 'preloader' ID exists in the HTML.");
   }
 
+  // Dynamically Adjust Body Padding Based on Header Height
+  function adjustBodyPadding() {
+    const header = document.querySelector('header');
+    const body = document.body;
+    if (header && body) {
+      const headerHeight = header.offsetHeight;
+      body.style.paddingTop = `${headerHeight}px`;
+      console.log(`Header height: ${headerHeight}px, body padding-top set to: ${headerHeight}px`);
+    } else {
+      console.error("Header or body element not found for adjusting padding.");
+    }
+  }
+
+  // Run on load and on window resize
+  window.addEventListener('load', adjustBodyPadding);
+  window.addEventListener('resize', adjustBodyPadding);
+  adjustBodyPadding(); // Initial call
+
   // Helper function to set href safely
   const setHref = (id, href) => {
     const element = document.getElementById(id);
@@ -214,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
       li.style.setProperty('--i', index + 1);
       li.innerHTML = `
         <a id="sidebar-${key}-link" href="${linkData.url}" data-section="${key}">
-          ${linkData.icon.replace('fill="currentColor"', 'fill="currentColor" style="fill: var(--highlight)"')}
+          ${linkData.icon}
           <span>${key.charAt(0).toUpperCase() + key.slice(1)}</span>
         </a>
       `;
@@ -224,6 +242,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // Force repaint with staggered delay
       setTimeout(() => {
         li.classList.add('force-render');
+        // Ensure SVG renders correctly by forcing a reflow
+        const svg = li.querySelector('svg');
+        if (svg) {
+          svg.style.display = 'none';
+          svg.offsetHeight; // Trigger reflow
+          svg.style.display = 'inline-block';
+        }
       }, 50 * (index + 1));
 
       void li.offsetWidth;
@@ -235,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetId = link.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
-          const headerHeight = 100;
+          const headerHeight = 120; // Increased offset to prevent overlap
           const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
           const offsetPosition = elementPosition - headerHeight;
 
