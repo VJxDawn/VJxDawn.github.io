@@ -1,8 +1,8 @@
-console.log("Script.js is loaded!"); // Debug log to confirm script loading
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Editable Data (Edit your links, skills, projects, and icons here)
+
   const editableData = {
     headerLinks: {
       email: "mailto:vmjain2411@gmail.com",
@@ -61,7 +61,22 @@ document.addEventListener('DOMContentLoaded', () => {
         screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
         description: "A library management system with a user-friendly interface.",
         tech: "React, Node.js, MongoDB"
-      }
+      },
+librarySystem1: {
+        github: "https://github.com/vihaanjain/library-system",
+        demo: "https://vihaan.dev/library-system-demo",
+        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
+        description: "A library management system with a user-friendly interface.",
+        tech: "React, Node.js, MongoDB"
+      },
+      librarySystem2: {
+        github: "https://github.com/vihaanjain/library-system",
+        demo: "https://vihaan.dev/library-system-demo",
+        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
+        description: "A library management system with a user-friendly interface.",
+        tech: "React, Node.js, MongoDB"
+      },
+      
     },
     contactLinks: {
       github: "https://github.com/VJxDawn",
@@ -130,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
-  // Preloader Typing Animation
   const loaderText = document.getElementById('loader-text');
   const textToType = "Hi, I'm Vihaan";
   let i = 0;
@@ -147,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Loader text element not found. Check if 'loader-text' ID exists in the HTML.");
   }
 
-  // Simulated Progress Bar Animation
+ 
   const progress = document.getElementById('progress');
   let width = 0;
   if (progress) {
@@ -163,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Progress bar element not found. Check if 'progress' ID exists in the HTML.");
   }
 
-  // Hide Preloader After DOM is Loaded (with a minimum display time for UX)
+
   const preloader = document.getElementById('preloader');
   const minDisplayTime = 1500;
   const startTime = Date.now();
@@ -187,25 +201,23 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error("Preloader element not found. Check if 'preloader' ID exists in the HTML.");
   }
 
-  // Dynamically Adjust Body Padding Based on Header Height
   function adjustBodyPadding() {
     const header = document.querySelector('header');
     const body = document.body;
     if (header && body) {
       const headerHeight = header.offsetHeight;
       body.style.paddingTop = `${headerHeight}px`;
-      console.log(`Header height: ${headerHeight}px, body padding-top set to: ${headerHeight}px`);
-    } else {
+      } else {
       console.error("Header or body element not found for adjusting padding.");
     }
   }
 
-  // Run on load and on window resize
+
   window.addEventListener('load', adjustBodyPadding);
   window.addEventListener('resize', adjustBodyPadding);
-  adjustBodyPadding(); // Initial call
+  adjustBodyPadding(); 
 
-  // Helper function to set href safely
+
   const setHref = (id, href) => {
     const element = document.getElementById(id);
     if (element) {
@@ -215,16 +227,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // Set Header Links
+
   setHref('header-email-link', editableData.headerLinks.email);
   setHref('header-github-link', editableData.headerLinks.github);
   setHref('header-linkedin-link', editableData.headerLinks.linkedin);
   setHref('header-leetcode-link', editableData.headerLinks.leetcode);
 
-  // Set Sidebar Links with SVGs and Custom Scroll Behavior
+
   const sidebarMenu = document.getElementById('sidebar-menu');
   if (sidebarMenu && editableData.sidebarLinks) {
-    console.log("Sidebar menu found, generating links...");
     sidebarMenu.innerHTML = ''; // Clear existing content
     Object.keys(editableData.sidebarLinks).forEach((key, index) => {
       const linkData = editableData.sidebarLinks[key];
@@ -237,30 +248,29 @@ document.addEventListener('DOMContentLoaded', () => {
         </a>
       `;
       sidebarMenu.appendChild(li);
-      console.log(`Appended sidebar item: ${key}`); // Debug log for each item
+      
 
-      // Force repaint with staggered delay
       setTimeout(() => {
         li.classList.add('force-render');
-        // Ensure SVG renders correctly by forcing a reflow
+
         const svg = li.querySelector('svg');
         if (svg) {
           svg.style.display = 'none';
-          svg.offsetHeight; // Trigger reflow
+          svg.offsetHeight; 
           svg.style.display = 'inline-block';
         }
       }, 50 * (index + 1));
 
       void li.offsetWidth;
 
-      // Add custom scroll behavior to sidebar links
+   
       const link = li.querySelector('a');
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
-          const headerHeight = 120; // Increased offset to prevent overlap
+          const headerHeight = 120; 
           const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
           const offsetPosition = elementPosition - headerHeight;
 
@@ -285,29 +295,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Generate Project Cards with Lazy Loading, Tech Tags, and Demo Links
   const projectsContainer = document.getElementById('projects-container');
-  if (projectsContainer && editableData.projectLinks) {
-    const projectGrid = document.createElement('div');
-    projectGrid.className = 'project-grid';
-    Object.keys(editableData.projectLinks).forEach(key => {
-      const project = editableData.projectLinks[key];
-      const projectCard = document.createElement('div');
-      projectCard.className = 'project-card';
-      projectCard.innerHTML = `
-        <img src="${project.screenshot}" alt="${key} screenshot" class="project-screenshot" loading="lazy">
-        <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
-        <p>${project.description}</p>
-        <p class="project-tech">Tech: ${project.tech}</p>
-        <div class="project-links">
-          <a href="${project.github}" id="project-${key}-github-link" class="project-link">GitHub</a>
-          <a href="${project.demo}" id="project-${key}-demo-link" class="project-link">Live Demo</a>
-        </div>
-      `;
-      projectGrid.appendChild(projectCard);
-    });
-    projectsContainer.appendChild(projectGrid);
-  } else {
-    console.error("Projects container not found or project links missing.");
+const allProjects = Object.entries(editableData.projectLinks);
+const projectsPerPage = 3;
+let currentPage = 0;
+
+function renderProjects(page) {
+  projectsContainer.innerHTML = ''; // Clear existing
+  const start = page * projectsPerPage;
+  const end = start + projectsPerPage;
+  const currentProjects = allProjects.slice(start, end);
+
+  currentProjects.forEach(([key, project]) => {
+    const projectCard = document.createElement('div');
+    projectCard.className = 'project-card';
+    projectCard.innerHTML = `
+      <img src="${project.screenshot}" alt="${key} screenshot" class="project-screenshot" loading="lazy">
+      <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+      <p>${project.description}</p>
+      <p class="project-tech">Tech: ${project.tech}</p>
+      <div class="project-links">
+        <a href="${project.github}" class="project-link" target="_blank">GitHub</a>
+        <a href="${project.demo}" class="project-link" target="_blank">Live Demo</a>
+      </div>
+    `;
+    projectsContainer.appendChild(projectCard);
+  });
+}
+
+function updateButtons() {
+  document.getElementById('prevProjects').disabled = currentPage === 0;
+  document.getElementById('nextProjects').disabled = currentPage >= Math.floor(allProjects.length / projectsPerPage);
+}
+
+document.getElementById('prevProjects').addEventListener('click', () => {
+  if (currentPage > 0) {
+    currentPage--;
+    renderProjects(currentPage);
+    updateButtons();
   }
+});
+
+document.getElementById('nextProjects').addEventListener('click', () => {
+  if ((currentPage + 1) * projectsPerPage < allProjects.length) {
+    currentPage++;
+    renderProjects(currentPage);
+    updateButtons();
+  }
+});
+
+// Initial render
+renderProjects(currentPage);
+updateButtons();
+
 
   // Generate Tech Stack Icons
   const techStackContainer = document.getElementById('tech-stack');
@@ -417,7 +456,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Ensure sidebar content is rendered before toggling
     setTimeout(() => {
-      console.log("Toggling sidebar...");
       sidebar.classList.toggle('open');
       container.classList.toggle('shifted');
       navIcon.textContent = sidebar.classList.contains('open') ? '×' : '☰';
@@ -591,3 +629,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+console.log

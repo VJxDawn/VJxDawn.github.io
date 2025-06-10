@@ -798,6 +798,57 @@ a {
   fill: #fff;
 }
 
+.project-pagination-controls {
+  grid-column: 1 / -1; /* Span the full width of the grid */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* Increased gap to accommodate larger buttons */
+  margin: 2rem 0 1rem;
+  padding: 1rem 0;
+}
+
+.project-nav-button {
+  padding: 1rem 1.5rem; /* Increased padding for larger buttons */
+  background: linear-gradient(90deg, var(--highlight) 0%, var(--highlight-dark) 100%); /* Gradient background */
+  color: white;
+  border: none;
+  border-radius: 16px; /* Increased border-radius for larger buttons */
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-nav-button svg {
+  width: 28px; /* Increased SVG size for larger buttons */
+  height: 28px;
+  fill: white;
+  transition: fill 0.3s ease;
+}
+
+.project-nav-button:hover svg,
+.project-nav-button.tapped svg {
+  fill: white; /* Ensure SVG stays white on hover */
+}
+
+.project-nav-button:hover,
+.project-nav-button.tapped {
+  background: linear-gradient(90deg, var(--highlight-dark) 0%, var(--highlight) 100%); /* Reversed gradient on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-nav-button:disabled {
+  background: linear-gradient(90deg, var(--highlight) 0%, var(--highlight-dark) 100%); /* Maintain gradient when disabled */
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
 /* Animations */
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -992,3 +1043,47 @@ a {
     padding: 0.6rem 1.2rem;
     font-size: 0.85rem;
   }
+
+  .project-pagination-controls {
+    grid-column: 1 / -1; /* Span the full width of the grid */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; /* Adjusted gap for smaller screens */
+    margin: 1.5rem 0 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .project-nav-button {
+    padding: 0.8rem 1.2rem; /* Adjusted padding for smaller screens, still larger than before */
+    background: linear-gradient(90deg, var(--highlight) 0%, var(--highlight-dark) 100%); /* Gradient background */
+    border-radius: 14px; /* Adjusted border-radius for smaller screens */
+  }
+
+  .project-nav-button svg {
+    width: 24px; /* Adjusted SVG size for smaller screens */
+    height: 24px;
+    fill: white;
+    transition: fill 0.3s ease;
+  }
+
+  .project-nav-button:hover svg,
+  .project-nav-button.tapped svg {
+    fill: white;
+  }
+
+  .project-nav-button:hover,
+  .project-nav-button.tapped {
+    background: linear-gradient(90deg, var(--highlight-dark) 0%, var(--highlight) 100%); /* Reversed gradient on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .project-nav-button:disabled {
+    background: linear-gradient(90deg, var(--highlight) 0%, var(--highlight-dark) 100%); /* Maintain gradient when disabled */
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+}
