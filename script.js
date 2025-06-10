@@ -35,10 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         url: "#experience", 
         icon: '<svg aria-label="Experience Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 14H4V8h16v10z"/></svg>' 
       },
-      contact: { 
-        url: "#contact", 
-        icon: '<svg aria-label="Contact Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 2H4c-1.1 0-2 .9-2 2v16l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H6l-2 2V4h16v10z"/></svg>' 
-      } 
+         "Quick Links": { 
+  url: "#quick-links", 
+  icon: `<svg aria-label="Quick Links Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>` 
+},
+
     },
     projectLinks: {
       portfolio: {
@@ -292,7 +293,10 @@ librarySystem1: {
     });
   } else {
     console.error("Sidebar menu not found. Check if 'sidebar-menu' ID exists in the HTML.");
-  }
+  } 
+
+
+  
 
   // Set Contact Links
   setHref('contact-github-link', editableData.contactLinks.github);
@@ -445,7 +449,7 @@ createPaginationDots();
 renderProjects(currentPage, false); // No animation on initial load
 
 // Tap Event for Mobile Devices
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+/*const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 if (isTouchDevice) {
   const tappableElements = document.querySelectorAll('.header-links-right svg, .toggle-mode, .nav-button, .sidebar a, .buttons a, .project-card, .project-link, .container, section, .dot');
   tappableElements.forEach(element => {
@@ -458,7 +462,7 @@ if (isTouchDevice) {
       }, 300);
     });
   });
-}
+}*/
   // Generate Awards & Achievements
   const awardsContainer = document.getElementById('awards-container');
   if (awardsContainer && editableData.awards) {
@@ -740,6 +744,23 @@ if (skillsContainer && editableData.skillsProgress) {
 } else {
   console.error("Skills progress container not found or skills data missing.");
 }
+
+// Tap Event for Mobile Devices
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (isTouchDevice) {
+  const tappableElements = document.querySelectorAll('.header-links-right svg, .toggle-mode, .nav-button, .sidebar a, .buttons a, .project-card, .project-link, .container, section, .dot, .quick-link-card');
+  tappableElements.forEach(element => {
+    element.addEventListener('touchstart', () => {
+      element.classList.add('tapped');
+    });
+    element.addEventListener('touchend', () => {
+      setTimeout(() => {
+        element.classList.remove('tapped');
+      }, 300);
+    });
+  });
+}
+
  
 });
 
