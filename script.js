@@ -76,6 +76,13 @@ librarySystem1: {
         description: "A library management system with a user-friendly interface.",
         tech: "React, Node.js, MongoDB"
       },
+       librarySystem3: {
+        github: "https://github.com/vihaanjain/library-system",
+        demo: "https://vihaan.dev/library-system-demo",
+        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
+        description: "A library management system with a user-friendly interface.",
+        tech: "React, Node.js, MongoDB"
+      },
       
     },
     contactLinks: {
