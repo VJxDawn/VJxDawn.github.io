@@ -294,44 +294,134 @@ librarySystem1: {
   setHref('contact-linkedin-link', editableData.contactLinks.linkedin);
 
   // Generate Project Cards with Lazy Loading, Tech Tags, and Demo Links
-  const projectsContainer = document.getElementById('projects-container');
+ // Generate Project Cards with Lazy Loading, Tech Tags, Demo Links, Dots, Auto-Scroll, Swipe, and Transitions
+const projectsContainer = document.getElementById('projects-container');
 const allProjects = Object.entries(editableData.projectLinks);
 const projectsPerPage = 3;
 let currentPage = 0;
+let autoScrollTimer = null;
+const AUTO_SCROLL_INTERVAL = 5000; // 5 seconds
 
-function renderProjects(page) {
-  projectsContainer.innerHTML = ''; // Clear existing
-  const start = page * projectsPerPage;
-  const end = start + projectsPerPage;
-  const currentProjects = allProjects.slice(start, end);
+function renderProjects(page, animate = true) {
+  // Apply fade-out animation before clearing
+  if (animate) {
+    projectsContainer.classList.remove('fade-in');
+    projectsContainer.classList.add('fade-out');
+  }
 
-  currentProjects.forEach(([key, project]) => {
-    const projectCard = document.createElement('div');
-    projectCard.className = 'project-card';
-    projectCard.innerHTML = `
-      <img src="${project.screenshot}" alt="${key} screenshot" class="project-screenshot" loading="lazy">
-      <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
-      <p>${project.description}</p>
-      <p class="project-tech">Tech: ${project.tech}</p>
-      <div class="project-links">
-        <a href="${project.github}" class="project-link" target="_blank">GitHub</a>
-        <a href="${project.demo}" class="project-link" target="_blank">Live Demo</a>
-      </div>
-    `;
-    projectsContainer.appendChild(projectCard);
+  setTimeout(() => {
+    projectsContainer.innerHTML = ''; // Clear existing
+    const start = page * projectsPerPage;
+    const end = start + projectsPerPage;
+    const currentProjects = allProjects.slice(start, end);
+
+    currentProjects.forEach(([key, project]) => {
+      const projectCard = document.createElement('div');
+      projectCard.className = 'project-card';
+      projectCard.innerHTML = `
+        <img src="${project.screenshot}" alt="${key} screenshot" class="project-screenshot" loading="lazy">
+        <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
+        <p>${project.description}</p>
+        <p class="project-tech">Tech: ${project.tech}</p>
+        <div class="project-links">
+          <a href="${project.github}" class="project-link" target="_blank">GitHub</a>
+          <a href="${project.demo}" class="project-link" target="_blank">Live Demo</a>
+        </div>
+      `;
+      projectsContainer.appendChild(projectCard);
+    });
+
+    // Apply fade-in animation after rendering
+    if (animate) {
+      projectsContainer.classList.remove('fade-out');
+      projectsContainer.classList.add('fade-in');
+    }
+
+    updateButtonsAndDots();
+    resetAutoScroll();
+  }, animate ? 300 : 0); // Match the CSS transition duration for fade-out
+}
+
+function updateButtonsAndDots() {
+  // Update buttons
+  document.getElementById('prevProjects').disabled = currentPage === 0;
+  document.getElementById('nextProjects').disabled = currentPage >= Math.floor(allProjects.length / projectsPerPage);
+
+  // Update dots
+  const dots = document.querySelectorAll('.pagination-dots .dot');
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentPage);
   });
 }
 
-function updateButtons() {
-  document.getElementById('prevProjects').disabled = currentPage === 0;
-  document.getElementById('nextProjects').disabled = currentPage >= Math.floor(allProjects.length / projectsPerPage);
+function createPaginationDots() {
+  const dotsContainer = document.querySelector('.pagination-dots');
+  const totalPages = Math.ceil(allProjects.length / projectsPerPage);
+  dotsContainer.innerHTML = ''; // Clear existing dots
+
+  for (let i = 0; i < totalPages; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot';
+    dot.addEventListener('click', () => {
+      currentPage = i;
+      renderProjects(currentPage);
+      resetAutoScroll();
+    });
+    dotsContainer.appendChild(dot);
+  }
 }
 
+function resetAutoScroll() {
+  if (autoScrollTimer) {
+    clearTimeout(autoScrollTimer);
+  }
+  autoScrollTimer = setTimeout(() => {
+    if ((currentPage + 1) * projectsPerPage < allProjects.length) {
+      currentPage++;
+    } else {
+      currentPage = 0; // Loop back to the first page
+    }
+    renderProjects(currentPage);
+  }, AUTO_SCROLL_INTERVAL);
+}
+
+// Swipe Support for Mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+projectsContainer.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+projectsContainer.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, false);
+
+function handleSwipe() {
+  const swipeThreshold = 50; // Minimum swipe distance in pixels
+  const swipeDistance = touchEndX - touchStartX;
+
+  if (Math.abs(swipeDistance) > swipeThreshold) {
+    if (swipeDistance > 0 && currentPage > 0) {
+      // Swipe right: go to previous page
+      currentPage--;
+      renderProjects(currentPage);
+    } else if (swipeDistance < 0 && (currentPage + 1) * projectsPerPage < allProjects.length) {
+      // Swipe left: go to next page
+      currentPage++;
+      renderProjects(currentPage);
+    }
+    resetAutoScroll();
+  }
+}
+
+// Event Listeners for Navigation Buttons
 document.getElementById('prevProjects').addEventListener('click', () => {
   if (currentPage > 0) {
     currentPage--;
     renderProjects(currentPage);
-    updateButtons();
+    resetAutoScroll();
   }
 });
 
@@ -339,52 +429,29 @@ document.getElementById('nextProjects').addEventListener('click', () => {
   if ((currentPage + 1) * projectsPerPage < allProjects.length) {
     currentPage++;
     renderProjects(currentPage);
-    updateButtons();
+    resetAutoScroll();
   }
 });
 
-// Initial render
-renderProjects(currentPage);
-updateButtons();
+// Initial Render and Setup
+createPaginationDots();
+renderProjects(currentPage, false); // No animation on initial load
 
-
-  // Generate Tech Stack Icons
-  const techStackContainer = document.getElementById('tech-stack');
-  if (techStackContainer && editableData.techStack) {
-    const techList = document.createElement('div');
-    techList.className = 'tech-stack-grid';
-    editableData.techStack.forEach(tech => {
-      const techItem = document.createElement('div');
-      techItem.className = 'tech-stack-item';
-      techItem.innerHTML = `
-        ${tech.icon}
-        <span>${tech.name}</span>
-      `;
-      techList.appendChild(techItem);
+// Tap Event for Mobile Devices
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (isTouchDevice) {
+  const tappableElements = document.querySelectorAll('.header-links-right svg, .toggle-mode, .nav-button, .sidebar a, .buttons a, .project-card, .project-link, .container, section, .dot');
+  tappableElements.forEach(element => {
+    element.addEventListener('touchstart', () => {
+      element.classList.add('tapped');
     });
-    techStackContainer.appendChild(techList);
-  } else {
-    console.error("Tech stack container not found or tech stack data missing.");
-  }
-
-  // Generate Skills Progress Bars
-  const skillsContainer = document.getElementById('skills-progress-container');
-  if (skillsContainer && editableData.skillsProgress) {
-    editableData.skillsProgress.forEach(skill => {
-      const skillDiv = document.createElement('div');
-      skillDiv.className = 'skill-progress-item';
-      skillDiv.innerHTML = `
-        <label>${skill.name}</label>
-        <div class="progress-bar">
-          <div class="progress" style="width: 0%;" data-percentage="${skill.percentage}"></div>
-        </div>
-      `;
-      skillsContainer.appendChild(skillDiv);
+    element.addEventListener('touchend', () => {
+      setTimeout(() => {
+        element.classList.remove('tapped');
+      }, 300);
     });
-  } else {
-    console.error("Skills progress container not found or skills data missing.");
-  }
-
+  });
+}
   // Generate Awards & Achievements
   const awardsContainer = document.getElementById('awards-container');
   if (awardsContainer && editableData.awards) {
@@ -613,21 +680,59 @@ updateButtons();
   const sectionAnimationObserver = new IntersectionObserver(animateSections, { threshold: 0.1 });
   sections.forEach(section => sectionAnimationObserver.observe(section));
 
-  // Tap Event for Mobile Devices
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouchDevice) {
-    const tappableElements = document.querySelectorAll('.header-links-right svg, .toggle-mode, .nav-button, .sidebar a, .buttons a, .project-card, .project-link, .container, section');
-    tappableElements.forEach(element => {
-      element.addEventListener('touchstart', () => {
-        element.classList.add('tapped');
-      });
-      element.addEventListener('touchend', () => {
-        setTimeout(() => {
-          element.classList.remove('tapped');
-        }, 300);
-      });
+ // Generate Tech Stack Icons
+  const techStackContainer = document.getElementById('tech-stack');
+  if (techStackContainer && editableData.techStack) {
+    const techList = document.createElement('div');
+    techList.className = 'tech-stack-grid';
+    editableData.techStack.forEach(tech => {
+      const techItem = document.createElement('div');
+      techItem.className = 'tech-stack-item';
+      techItem.innerHTML = `
+        ${tech.icon}
+        <span>${tech.name}</span>
+      `;
+      techList.appendChild(techItem);
     });
+    techStackContainer.appendChild(techList);
+  } else {
+    console.error("Tech stack container not found or tech stack data missing.");
   }
+
+  // Generate Skills Progress Bars
+ // Generate Skills Progress Bars
+const skillsContainer = document.querySelector('.skill-progress');
+if (skillsContainer && editableData.skillsProgress) {
+  skillsContainer.innerHTML = ''; // Clear any existing content
+  editableData.skillsProgress.forEach(skill => {
+    const skillDiv = document.createElement('div');
+    skillDiv.className = 'skill-progress-item';
+    skillDiv.innerHTML = `
+      <label>${skill.name}</label>
+      <div class="progress-bar">
+        <div class="progress" style="width: 0%;" data-percentage="${skill.percentage}"></div>
+      </div>
+    `;
+    skillsContainer.appendChild(skillDiv);
+  });
+
+  // Move the Intersection Observer here to ensure it runs after the bars are generated
+  const progressBars = document.querySelectorAll('.progress');
+  const animateProgressBars = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const percentage = bar.getAttribute('data-percentage');
+        bar.style.width = `${percentage}%`;
+        observer.unobserve(bar);
+      }
+    });
+  };
+  const progressObserver = new IntersectionObserver(animateProgressBars, { threshold: 0.1 });
+  progressBars.forEach(bar => progressObserver.observe(bar));
+} else {
+  console.error("Skills progress container not found or skills data missing.");
+}
+ 
 });
 
-console.log
