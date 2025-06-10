@@ -1,7 +1,5 @@
 
-
 document.addEventListener('DOMContentLoaded', () => {
-
 
   const editableData = {
     headerLinks: {
@@ -35,10 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
         url: "#experience", 
         icon: '<svg aria-label="Experience Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 14H4V8h16v10z"/></svg>' 
       },
-         "Quick Links": { 
-  url: "#quick-links", 
-  icon: `<svg aria-label="Quick Links Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>` 
-},
+      contact: { 
+        url: "#contact", 
+        icon: '<svg aria-label="Contact Icon" class="sidebar-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' 
+      },
 
     },
     projectLinks: {
@@ -52,39 +50,39 @@ document.addEventListener('DOMContentLoaded', () => {
       aiChatbot: {
         github: "https://github.com/vihaanjain/ai-chatbot",
         demo: "https://vihaan.dev/ai-chatbot-demo",
-        screenshot: "https://via.placeholder.com/300x200.png?text=AI+Chatbot+Screenshot",
+        screenshot: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFudHozwy6jiwxtgUxO3AyWY-b_MErok34tQ&s",
         description: "An AI-powered chatbot built with Python and NLP libraries.",
         tech: "Python, NLTK, Flask"
       },
       librarySystem: {
         github: "https://github.com/vihaanjain/library-system",
         demo: "https://vihaan.dev/library-system-demo",
-        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
+        screenshot: "https://preview.redd.it/screenshot-of-someones-desktop-from-a-random-2010-minecraft-v0-38ih8bdu1smc1.png?auto=webp&s=55be42ebc51d58228a72b04a47b4a8f93849a5d0",
         description: "A library management system with a user-friendly interface.",
         tech: "React, Node.js, MongoDB"
       },
 librarySystem1: {
         github: "https://github.com/vihaanjain/library-system",
         demo: "https://vihaan.dev/library-system-demo",
-        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
+        screenshot: "https://www.elevenforum.com/data/attachments/86/86754-8cd442de8a3de7d273c26b40301ed561.jpg?hash=jNRC3oo959",
         description: "A library management system with a user-friendly interface.",
         tech: "React, Node.js, MongoDB"
       },
       librarySystem2: {
         github: "https://github.com/vihaanjain/library-system",
         demo: "https://vihaan.dev/library-system-demo",
-        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
+        screenshot: "https://live.staticflickr.com/5089/5363600550_fe13455428_h.jpg",
         description: "A library management system with a user-friendly interface.",
         tech: "React, Node.js, MongoDB"
       },
        librarySystem3: {
         github: "https://github.com/vihaanjain/library-system",
         demo: "https://vihaan.dev/library-system-demo",
-        screenshot: "https://via.placeholder.com/300x200.png?text=Library+System+Screenshot",
+        screenshot: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVEHbU5Tz10BAVSGvKBsGZMa_uZnUtqTqYVg&s",
         description: "A library management system with a user-friendly interface.",
         tech: "React, Node.js, MongoDB"
       },
-      
+
     },
     contactLinks: {
       github: "https://github.com/VJxDawn",
@@ -148,8 +146,45 @@ librarySystem1: {
       }
     ],
     experiences: [
-      { role: "Freelancing", company: "Sharlz-Startup", duration: "April 2022", description: "Developed responsive E-Commerce Clothing Website using React and Node.js." },
-      { role: "Freelancing", company: "Creamy-Creation", duration: "June 2025", description: "Developed responsive website for HomeBaker (My Mom) for her bakery." }
+      { 
+        role: "Freelance Web Developer", 
+        company: "Sharlz-Startup", 
+        duration: "April 2022", 
+        description: "Developed a fully responsive E-Commerce clothing website from scratch. Built the frontend using React.js with modern UI components and integrated a Node.js backend for handling user authentication, product management, and order processing. Implemented features like shopping cart functionality, payment gateway integration, and responsive design optimized for mobile and desktop devices."
+      },
+      { 
+        role: "Freelance Web Developer", 
+        company: "Creamy-Creation", 
+        duration: "June 2025", 
+        description: "Created a modern, responsive website for a home bakery business specializing in custom cakes and desserts. Designed an intuitive user interface showcasing the bakery's portfolio with image galleries, implemented an online ordering system with custom cake configuration options, and integrated contact forms for customer inquiries. The website features mobile-first design and optimized loading times for better user experience."
+      }
+    ],
+    timeline: [
+      {
+        year: "2018",
+        title: "Discovered Coding",
+        description: "Discovered coding through Scratch at a school exhibition, building a project that earned appreciation.",
+        icon: '<svg class="timeline-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>'
+      },
+      {
+        year: "2020",
+        title: "Web Development & Discord Bot",
+        description: "Explored web development during lockdown, learned Python, HTML/CSS and JavaScript, freelanced (earned ~₹15,000 INR), and created a verified Discord bot serving 2,500+ servers.",
+        icon: '<svg class="timeline-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2742-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9554 2.4189-2.1568 2.4189Z"/></svg>'
+      },
+      {
+        year: "2025",
+        title: "Engineering Entrance Exams",
+        description: "Gave JEE and other Engineering Entrance Exams.",
+        icon: '<svg class="timeline-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.1 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>'
+      },
+      {
+        year: "2025",
+        title: "Started B.Tech at VJTI",
+        description: "Started B.Tech in Electrical Engineering at VJTI Mumbai.",
+        icon: '<svg class="timeline-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.909V17h2V9L12 3z"/></svg>',
+        current: true
+      }
     ]
   };
 
@@ -165,11 +200,8 @@ librarySystem1: {
       }
     }
     typeLoaderText();
-  } else {
-    console.error("Loader text element not found. Check if 'loader-text' ID exists in the HTML.");
   }
 
- 
   const progress = document.getElementById('progress');
   let width = 0;
   if (progress) {
@@ -181,10 +213,7 @@ librarySystem1: {
         progress.style.width = `${width}%`;
       }
     }, 50);
-  } else {
-    console.error("Progress bar element not found. Check if 'progress' ID exists in the HTML.");
   }
-
 
   const preloader = document.getElementById('preloader');
   const minDisplayTime = 1500;
@@ -194,7 +223,7 @@ librarySystem1: {
     function hidePreloader() {
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
-      
+
       setTimeout(() => {
         preloader.style.opacity = '0';
         setTimeout(() => {
@@ -205,8 +234,6 @@ librarySystem1: {
 
     window.addEventListener('load', hidePreloader);
     setTimeout(hidePreloader, 5000);
-  } else {
-    console.error("Preloader element not found. Check if 'preloader' ID exists in the HTML.");
   }
 
   function adjustBodyPadding() {
@@ -215,36 +242,27 @@ librarySystem1: {
     if (header && body) {
       const headerHeight = header.offsetHeight;
       body.style.paddingTop = `${headerHeight}px`;
-      } else {
-      console.error("Header or body element not found for adjusting padding.");
     }
   }
-
 
   window.addEventListener('load', adjustBodyPadding);
   window.addEventListener('resize', adjustBodyPadding);
   adjustBodyPadding(); 
 
-
   const setHref = (id, href) => {
     const element = document.getElementById(id);
     if (element) {
       element.href = href;
-    } else {
-      console.error(`Element with ID '${id}' not found for setting href.`);
     }
   };
-
 
   setHref('header-email-link', editableData.headerLinks.email);
   setHref('header-github-link', editableData.headerLinks.github);
   setHref('header-linkedin-link', editableData.headerLinks.linkedin);
-  setHref('header-leetcode-link', editableData.headerLinks.leetcode);
-
 
   const sidebarMenu = document.getElementById('sidebar-menu');
   if (sidebarMenu && editableData.sidebarLinks) {
-    sidebarMenu.innerHTML = ''; // Clear existing content
+    sidebarMenu.innerHTML = '';
     Object.keys(editableData.sidebarLinks).forEach((key, index) => {
       const linkData = editableData.sidebarLinks[key];
       const li = document.createElement('li');
@@ -256,79 +274,104 @@ librarySystem1: {
         </a>
       `;
       sidebarMenu.appendChild(li);
-      
 
       setTimeout(() => {
         li.classList.add('force-render');
-
         const svg = li.querySelector('svg');
         if (svg) {
           svg.style.display = 'none';
-          svg.offsetHeight; 
+          svg.offsetHeight;
           svg.style.display = 'inline-block';
         }
       }, 50 * (index + 1));
 
       void li.offsetWidth;
-
-   
       const link = li.querySelector('a');
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
-          const headerHeight = 120; 
+          const header = document.querySelector('header');
+          const isMobile = window.innerWidth <= 768;
+          const headerHeight = isMobile ? (header ? header.offsetHeight + 20 : 100) : 120;
+
           const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
           const offsetPosition = elementPosition - headerHeight;
+
+          targetElement.style.transition = 'all 0.3s ease';
+          targetElement.style.transform = 'scale(1.02)';
+          targetElement.style.boxShadow = '0 15px 30px rgba(126, 87, 194, 0.3)';
+
+          setTimeout(() => {
+            targetElement.style.transform = 'scale(1)';
+            targetElement.style.boxShadow = '';
+          }, 300);
 
           window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
           });
-        } else {
-          console.error(`Target element with ID '${targetId}' not found for smooth scroll.`);
+
+          setTimeout(() => {
+            sidebarLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            link.style.transform = 'scale(1.05)';
+            setTimeout(() => {
+              link.style.transform = '';
+            }, 200);
+
+            const sectionName = link.getAttribute('data-section');
+            const newTitle = sectionName.charAt(0).toUpperCase() + sectionName.slice(1);
+            if (titleElement) {
+              titleElement.style.transition = 'all 0.3s ease';
+              titleElement.style.color = 'var(--highlight)';
+              setTimeout(() => {
+                titleElement.style.color = '';
+              }, 300);
+
+              typeText(newTitle);
+              lastDisplayedTitle = newTitle;
+            }
+            lastVisibleSection = targetId;
+          }, 100);
+
+          const sidebar = document.getElementById('sidebar');
+          const container = document.getElementById('mainContainer');
+          const navIcon = document.getElementById('navIcon');
+          if (sidebar && sidebar.classList.contains('open') && window.innerWidth <= 768) {
+            sidebar.classList.remove('open');
+            if (container) container.classList.remove('shifted');
+            if (navIcon) navIcon.textContent = '☰';
+          }
         }
       });
     });
-  } else {
-    console.error("Sidebar menu not found. Check if 'sidebar-menu' ID exists in the HTML.");
-  } 
+  }
 
-
-  
-
-  // Set Contact Links
-  setHref('contact-github-link', editableData.contactLinks.github);
-  setHref('contact-cv-link', editableData.contactLinks.cv);
-  setHref('contact-email-link', editableData.contactLinks.email);
-  setHref('contact-linkedin-link', editableData.contactLinks.linkedin);
-
-  // Generate Project Cards with Lazy Loading, Tech Tags, and Demo Links
- // Generate Project Cards with Lazy Loading, Tech Tags, Demo Links, Dots, Auto-Scroll, Swipe, and Transitions
-const projectsContainer = document.getElementById('projects-container');
-const allProjects = Object.entries(editableData.projectLinks);
-const projectsPerPage = 3;
-let currentPage = 0;
-let autoScrollTimer = null;
-const AUTO_SCROLL_INTERVAL = 5000; // 5 seconds
+  const projectsContainer = document.getElementById('projects-container');
+  const allProjects = Object.entries(editableData.projectLinks);
+  const projectsPerPage = 3;
+  let currentPage = 0;
+  let autoScrollTimer = null;
+  const AUTO_SCROLL_INTERVAL = 5000;
 
 function renderProjects(page, animate = true) {
-  // Apply fade-out animation before clearing
   if (animate) {
     projectsContainer.classList.remove('fade-in');
     projectsContainer.classList.add('fade-out');
   }
 
   setTimeout(() => {
-    projectsContainer.innerHTML = ''; // Clear existing
+    projectsContainer.innerHTML = '';
     const start = page * projectsPerPage;
     const end = start + projectsPerPage;
     const currentProjects = allProjects.slice(start, end);
 
-    currentProjects.forEach(([key, project]) => {
+    currentProjects.forEach(([key, project], index) => {
       const projectCard = document.createElement('div');
       projectCard.className = 'project-card';
+      projectCard.style.setProperty('--index', index);
       projectCard.innerHTML = `
         <img src="${project.screenshot}" alt="${key} screenshot" class="project-screenshot" loading="lazy">
         <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
@@ -342,7 +385,6 @@ function renderProjects(page, animate = true) {
       projectsContainer.appendChild(projectCard);
     });
 
-    // Apply fade-in animation after rendering
     if (animate) {
       projectsContainer.classList.remove('fade-out');
       projectsContainer.classList.add('fade-in');
@@ -350,15 +392,13 @@ function renderProjects(page, animate = true) {
 
     updateButtonsAndDots();
     resetAutoScroll();
-  }, animate ? 300 : 0); // Match the CSS transition duration for fade-out
+  }, animate ? 300 : 0);
 }
 
 function updateButtonsAndDots() {
-  // Update buttons
   document.getElementById('prevProjects').disabled = currentPage === 0;
   document.getElementById('nextProjects').disabled = currentPage >= Math.floor(allProjects.length / projectsPerPage);
 
-  // Update dots
   const dots = document.querySelectorAll('.pagination-dots .dot');
   dots.forEach((dot, index) => {
     dot.classList.toggle('active', index === currentPage);
@@ -368,7 +408,7 @@ function updateButtonsAndDots() {
 function createPaginationDots() {
   const dotsContainer = document.querySelector('.pagination-dots');
   const totalPages = Math.ceil(allProjects.length / projectsPerPage);
-  dotsContainer.innerHTML = ''; // Clear existing dots
+  dotsContainer.innerHTML = '';
 
   for (let i = 0; i < totalPages; i++) {
     const dot = document.createElement('div');
@@ -390,13 +430,12 @@ function resetAutoScroll() {
     if ((currentPage + 1) * projectsPerPage < allProjects.length) {
       currentPage++;
     } else {
-      currentPage = 0; // Loop back to the first page
+      currentPage = 0;
     }
     renderProjects(currentPage);
   }, AUTO_SCROLL_INTERVAL);
 }
 
-// Swipe Support for Mobile
 let touchStartX = 0;
 let touchEndX = 0;
 
@@ -410,16 +449,14 @@ projectsContainer.addEventListener('touchend', (e) => {
 }, false);
 
 function handleSwipe() {
-  const swipeThreshold = 50; // Minimum swipe distance in pixels
+  const swipeThreshold = 50;
   const swipeDistance = touchEndX - touchStartX;
 
   if (Math.abs(swipeDistance) > swipeThreshold) {
     if (swipeDistance > 0 && currentPage > 0) {
-      // Swipe right: go to previous page
       currentPage--;
       renderProjects(currentPage);
     } else if (swipeDistance < 0 && (currentPage + 1) * projectsPerPage < allProjects.length) {
-      // Swipe left: go to next page
       currentPage++;
       renderProjects(currentPage);
     }
@@ -427,7 +464,6 @@ function handleSwipe() {
   }
 }
 
-// Event Listeners for Navigation Buttons
 document.getElementById('prevProjects').addEventListener('click', () => {
   if (currentPage > 0) {
     currentPage--;
@@ -444,31 +480,15 @@ document.getElementById('nextProjects').addEventListener('click', () => {
   }
 });
 
-// Initial Render and Setup
 createPaginationDots();
-renderProjects(currentPage, false); // No animation on initial load
+renderProjects(currentPage, false);
 
-// Tap Event for Mobile Devices
-/*const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-if (isTouchDevice) {
-  const tappableElements = document.querySelectorAll('.header-links-right svg, .toggle-mode, .nav-button, .sidebar a, .buttons a, .project-card, .project-link, .container, section, .dot');
-  tappableElements.forEach(element => {
-    element.addEventListener('touchstart', () => {
-      element.classList.add('tapped');
-    });
-    element.addEventListener('touchend', () => {
-      setTimeout(() => {
-        element.classList.remove('tapped');
-      }, 300);
-    });
-  });
-}*/
-  // Generate Awards & Achievements
   const awardsContainer = document.getElementById('awards-container');
   if (awardsContainer && editableData.awards) {
     const awardList = document.createElement('ul');
-    editableData.awards.forEach(award => {
+    editableData.awards.forEach((award, index) => {
       const awardItem = document.createElement('li');
+      awardItem.style.setProperty('--index', index);
       awardItem.innerHTML = `
         ${award.icon}
         <span><strong>${award.title}</strong> - ${award.description}</span>
@@ -476,16 +496,14 @@ if (isTouchDevice) {
       awardList.appendChild(awardItem);
     });
     awardsContainer.appendChild(awardList);
-  } else {
-    console.error("Awards container not found or awards data missing.");
   }
 
-  // Generate Certifications with Logos
   const certificationsContainer = document.getElementById('certifications-container');
   if (certificationsContainer && editableData.certifications) {
     const certList = document.createElement('ul');
-    editableData.certifications.forEach(cert => {
+    editableData.certifications.forEach((cert, index) => {
       const certItem = document.createElement('li');
+      certItem.style.setProperty('--index', index);
       certItem.innerHTML = `
         ${cert.logo}
         <span><strong>${cert.name}</strong> - ${cert.issuer} (${cert.year})</span>
@@ -493,33 +511,57 @@ if (isTouchDevice) {
       certList.appendChild(certItem);
     });
     certificationsContainer.appendChild(certList);
-  } else {
-    console.error("Certifications container not found or certifications data missing.");
   }
 
-  // Generate Experiences
   const experiencesContainer = document.getElementById('experiences-container');
   if (experiencesContainer && editableData.experiences) {
     const expList = document.createElement('ul');
-    editableData.experiences.forEach(exp => {
+    editableData.experiences.forEach((exp, index) => {
       const expItem = document.createElement('li');
+      expItem.style.setProperty('--index', index);
       expItem.innerHTML = `
-        <strong>${exp.role}</strong> - ${exp.company} (${exp.duration})<br>
-        ${exp.description}
+        <div class="experience-header">
+          <span class="experience-role">${exp.role}</span>
+          <span class="experience-company">@ ${exp.company}</span>
+          <span class="experience-duration">(${exp.duration})</span>
+        </div>
+        <div class="experience-description">${exp.description}</div>
       `;
       expList.appendChild(expItem);
     });
     experiencesContainer.appendChild(expList);
-  } else {
-    console.error("Experiences container not found or experiences data missing.");
   }
 
-  // Sidebar Toggle Functionality
+  const timelineContainer = document.getElementById('timeline-container');
+  if (timelineContainer && editableData.timeline) {
+    const timelineWrapper = document.createElement('div');
+    timelineWrapper.className = 'timeline-wrapper';
+
+    editableData.timeline.forEach((event, index) => {
+      const timelineItem = document.createElement('div');
+      timelineItem.className = `timeline-item ${event.current ? 'current' : ''}`;
+      timelineItem.style.setProperty('--index', index);
+      timelineItem.innerHTML = `
+        <div class="timeline-content">
+          <div class="timeline-year">${event.year}</div>
+          <div class="timeline-info">
+            ${event.icon}
+            <div class="timeline-text">
+              <h4>${event.title}</h4>
+              <p>${event.description}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      timelineWrapper.appendChild(timelineItem);
+    });
+
+    timelineContainer.appendChild(timelineWrapper);
+  }
+
   const navIconElement = document.getElementById('navIcon');
   if (navIconElement) {
     navIconElement.addEventListener('click', toggleSidebar);
-  } else {
-    console.error("Nav icon element not found. Check if 'navIcon' ID exists in the HTML.");
   }
 
   function toggleSidebar() {
@@ -528,24 +570,19 @@ if (isTouchDevice) {
     const navIcon = document.getElementById('navIcon');
 
     if (!sidebar || !container || !navIcon) {
-      console.error("Sidebar, container, or navIcon not found.");
       return;
     }
 
-    // Ensure sidebar content is rendered before toggling
     setTimeout(() => {
       sidebar.classList.toggle('open');
       container.classList.toggle('shifted');
       navIcon.textContent = sidebar.classList.contains('open') ? '×' : '☰';
-    }, 100); // Delay to ensure rendering on mobile
+    }, 100);
   }
 
-  // Dark Mode Toggle Functionality
   const modeBtnElement = document.getElementById('modeBtn');
   if (modeBtnElement) {
     modeBtnElement.addEventListener('click', toggleMode);
-  } else {
-    console.error("Mode button element not found. Check if 'modeBtn' ID exists in the HTML.");
   }
 
   function toggleMode() {
@@ -553,11 +590,14 @@ if (isTouchDevice) {
     const modeBtn = document.getElementById('modeBtn');
     if (modeBtn) {
       const darkMode = document.body.classList.contains('dark');
-      modeBtn.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
+      const toggleText = modeBtn.querySelector('.toggle-text');
+      if (toggleText) {
+        toggleText.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
+      }
     }
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   }
 
-  // Typing Animation for Header Title (Initial Load Only)
   const titleElement = document.getElementById('header-title');
   const defaultTitle = "Vihaan's Portfolio";
   let typingTimeout = null;
@@ -584,26 +624,25 @@ if (isTouchDevice) {
       type();
     }
 
-    // Initial typing animation
     typeText(defaultTitle);
-  } else {
-    console.error("Header title element not found. Check if 'header-title' ID exists in the HTML.");
   }
 
-  // Update Header Title Based on Current Section
   const sections = document.querySelectorAll('section');
   const sidebarLinks = document.querySelectorAll('.sidebar a');
   let lastVisibleSection = null;
   let lastDisplayedTitle = defaultTitle;
 
   const highlightActiveSection = () => {
-    const viewportTop = window.scrollY + 100;
+    const header = document.querySelector('header');
+    const isMobile = window.innerWidth <= 768;
+    const headerOffset = isMobile ? (header ? header.offsetHeight + 20 : 100) : 100;
+    const viewportTop = window.scrollY + headerOffset;
 
     let currentSection = null;
     let maxSectionTop = -Infinity;
 
     sections.forEach(section => {
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY - 100;
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY - headerOffset;
       const sectionBottom = sectionTop + section.offsetHeight;
 
       if (sectionTop <= viewportTop && viewportTop < sectionBottom) {
@@ -615,7 +654,7 @@ if (isTouchDevice) {
     });
 
     const aboutSection = document.getElementById('about');
-    const aboutTop = aboutSection ? (aboutSection.getBoundingClientRect().top + window.scrollY - 100) : 0;
+    const aboutTop = aboutSection ? (aboutSection.getBoundingClientRect().top + window.scrollY - headerOffset) : 0;
     if (viewportTop < aboutTop) {
       if (lastVisibleSection !== null) {
         lastVisibleSection = null;
@@ -664,7 +703,6 @@ if (isTouchDevice) {
   }, observerOptions);
   sections.forEach(section => sectionObserver.observe(section));
 
-  // Progress Bar Animation on Scroll
   const progressBars = document.querySelectorAll('.progress');
   const animateProgressBars = (entries, observer) => {
     entries.forEach(entry => {
@@ -679,7 +717,6 @@ if (isTouchDevice) {
   const progressObserver = new IntersectionObserver(animateProgressBars, { threshold: 0.1 });
   progressBars.forEach(bar => progressObserver.observe(bar));
 
-  // Section Animation on Scroll
   const animateSections = (entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -691,7 +728,6 @@ if (isTouchDevice) {
   const sectionAnimationObserver = new IntersectionObserver(animateSections, { threshold: 0.1 });
   sections.forEach(section => sectionAnimationObserver.observe(section));
 
- // Generate Tech Stack Icons
   const techStackContainer = document.getElementById('tech-stack');
   if (techStackContainer && editableData.techStack) {
     const techList = document.createElement('div');
@@ -706,15 +742,11 @@ if (isTouchDevice) {
       techList.appendChild(techItem);
     });
     techStackContainer.appendChild(techList);
-  } else {
-    console.error("Tech stack container not found or tech stack data missing.");
   }
 
-  // Generate Skills Progress Bars
- // Generate Skills Progress Bars
 const skillsContainer = document.querySelector('.skill-progress');
 if (skillsContainer && editableData.skillsProgress) {
-  skillsContainer.innerHTML = ''; // Clear any existing content
+  skillsContainer.innerHTML = '';
   editableData.skillsProgress.forEach(skill => {
     const skillDiv = document.createElement('div');
     skillDiv.className = 'skill-progress-item';
@@ -727,7 +759,6 @@ if (skillsContainer && editableData.skillsProgress) {
     skillsContainer.appendChild(skillDiv);
   });
 
-  // Move the Intersection Observer here to ensure it runs after the bars are generated
   const progressBars = document.querySelectorAll('.progress');
   const animateProgressBars = (entries, observer) => {
     entries.forEach(entry => {
@@ -741,11 +772,8 @@ if (skillsContainer && editableData.skillsProgress) {
   };
   const progressObserver = new IntersectionObserver(animateProgressBars, { threshold: 0.1 });
   progressBars.forEach(bar => progressObserver.observe(bar));
-} else {
-  console.error("Skills progress container not found or skills data missing.");
 }
 
-// Tap Event for Mobile Devices
 const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 if (isTouchDevice) {
   const tappableElements = document.querySelectorAll('.header-links-right svg, .toggle-mode, .nav-button, .sidebar a, .buttons a, .project-card, .project-link, .container, section, .dot, .quick-link-card');
@@ -761,6 +789,58 @@ if (isTouchDevice) {
   });
 }
 
- 
-});
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark');
+    const modeBtn = document.getElementById('modeBtn');
+    if (modeBtn) {
+      const toggleText = modeBtn.querySelector('.toggle-text');
+      if (toggleText) {
+        toggleText.textContent = 'Light Mode';
+      }
+    }
+  }
 
+  const backToTopButton = document.getElementById('backToTop');
+  
+  const showBackToTop = () => {
+    if (window.pageYOffset > 300) {
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', showBackToTop);
+
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  backToTopButton.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const sidebar = document.getElementById('sidebar');
+      const container = document.getElementById('mainContainer');
+      const navIcon = document.getElementById('navIcon');
+      if (sidebar && sidebar.classList.contains('open')) {
+        sidebar.classList.remove('open');
+        if (container) container.classList.remove('shifted');
+        if (navIcon) navIcon.textContent = '☰';
+      }
+    }
+  });
+
+});
