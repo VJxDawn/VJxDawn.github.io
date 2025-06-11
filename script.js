@@ -1,6 +1,46 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Parallax scrolling effect for graffiti background
+  function initParallaxEffect() {
+    const codeGraffiti = document.getElementById('codeGraffiti');
+    const layers = document.querySelectorAll('.graffiti-layer');
+    
+    function updateParallax() {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.5;
+      
+      if (codeGraffiti) {
+        codeGraffiti.style.transform = `translateY(${rate * 0.1}px)`;
+      }
+      
+      layers.forEach((layer, index) => {
+        const speed = (index + 1) * 0.2;
+        const yPos = -(scrolled * speed);
+        layer.style.transform = `translateY(${yPos}px) translateX(${Math.sin(scrolled * 0.001) * 10}px)`;
+      });
+    }
+    
+    let ticking = false;
+    function requestTick() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+    
+    function handleScroll() {
+      requestTick();
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', handleScroll);
+    updateParallax(); // Initial call
+  }
+  
+  // Initialize parallax effect
+  initParallaxEffect();
+
   const editableData = {
     headerLinks: {
       email: "mailto:vmjain2411@gmail.com",
@@ -200,7 +240,9 @@ librarySystem1: {
       }
     }
     typeLoaderText();
+  } else {
   }
+
 
   const progress = document.getElementById('progress');
   let width = 0;
@@ -213,7 +255,9 @@ librarySystem1: {
         progress.style.width = `${width}%`;
       }
     }, 50);
+  } else {
   }
+
 
   const preloader = document.getElementById('preloader');
   const minDisplayTime = 1500;
@@ -234,6 +278,7 @@ librarySystem1: {
 
     window.addEventListener('load', hidePreloader);
     setTimeout(hidePreloader, 5000);
+  } else {
   }
 
   function adjustBodyPadding() {
@@ -242,19 +287,24 @@ librarySystem1: {
     if (header && body) {
       const headerHeight = header.offsetHeight;
       body.style.paddingTop = `${headerHeight}px`;
+      } else {
     }
   }
+
 
   window.addEventListener('load', adjustBodyPadding);
   window.addEventListener('resize', adjustBodyPadding);
   adjustBodyPadding(); 
 
+
   const setHref = (id, href) => {
     const element = document.getElementById(id);
     if (element) {
       element.href = href;
+    } else {
     }
   };
+
 
   setHref('header-email-link', editableData.headerLinks.email);
   setHref('header-github-link', editableData.headerLinks.github);
@@ -289,7 +339,7 @@ librarySystem1: {
       const link = li.querySelector('a');
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
+        const targetId =link.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
           const header = document.querySelector('header');
@@ -339,7 +389,7 @@ librarySystem1: {
           const sidebar = document.getElementById('sidebar');
           const container = document.getElementById('mainContainer');
           const navIcon = document.getElementById('navIcon');
-          if (sidebar && sidebar.classList.contains('open') && window.innerWidth <= 768) {
+          if (sidebar && sidebar.classList.contains('open')) {
             sidebar.classList.remove('open');
             if (container) container.classList.remove('shifted');
             if (navIcon) navIcon.textContent = '☰';
@@ -351,7 +401,8 @@ librarySystem1: {
 
   const projectsContainer = document.getElementById('projects-container');
   const allProjects = Object.entries(editableData.projectLinks);
-  const projectsPerPage = 3;
+  const isMobileView = () => window.innerWidth <= 768;
+  const getProjectsPerPage = () => isMobileView() ? 1 : 3;
   let currentPage = 0;
   let autoScrollTimer = null;
   const AUTO_SCROLL_INTERVAL = 5000;
@@ -364,14 +415,14 @@ function renderProjects(page, animate = true) {
 
   setTimeout(() => {
     projectsContainer.innerHTML = '';
+    const projectsPerPage = getProjectsPerPage();
     const start = page * projectsPerPage;
     const end = start + projectsPerPage;
     const currentProjects = allProjects.slice(start, end);
 
-    currentProjects.forEach(([key, project], index) => {
+    currentProjects.forEach(([key, project]) => {
       const projectCard = document.createElement('div');
       projectCard.className = 'project-card';
-      projectCard.style.setProperty('--index', index);
       projectCard.innerHTML = `
         <img src="${project.screenshot}" alt="${key} screenshot" class="project-screenshot" loading="lazy">
         <h3>${key.charAt(0).toUpperCase() + key.slice(1)}</h3>
@@ -396,6 +447,7 @@ function renderProjects(page, animate = true) {
 }
 
 function updateButtonsAndDots() {
+  const projectsPerPage = getProjectsPerPage();
   document.getElementById('prevProjects').disabled = currentPage === 0;
   document.getElementById('nextProjects').disabled = currentPage >= Math.floor(allProjects.length / projectsPerPage);
 
@@ -407,6 +459,7 @@ function updateButtonsAndDots() {
 
 function createPaginationDots() {
   const dotsContainer = document.querySelector('.pagination-dots');
+  const projectsPerPage = getProjectsPerPage();
   const totalPages = Math.ceil(allProjects.length / projectsPerPage);
   dotsContainer.innerHTML = '';
 
@@ -427,6 +480,7 @@ function resetAutoScroll() {
     clearTimeout(autoScrollTimer);
   }
   autoScrollTimer = setTimeout(() => {
+    const projectsPerPage = getProjectsPerPage();
     if ((currentPage + 1) * projectsPerPage < allProjects.length) {
       currentPage++;
     } else {
@@ -451,6 +505,7 @@ projectsContainer.addEventListener('touchend', (e) => {
 function handleSwipe() {
   const swipeThreshold = 50;
   const swipeDistance = touchEndX - touchStartX;
+  const projectsPerPage = getProjectsPerPage();
 
   if (Math.abs(swipeDistance) > swipeThreshold) {
     if (swipeDistance > 0 && currentPage > 0) {
@@ -473,6 +528,7 @@ document.getElementById('prevProjects').addEventListener('click', () => {
 });
 
 document.getElementById('nextProjects').addEventListener('click', () => {
+  const projectsPerPage = getProjectsPerPage();
   if ((currentPage + 1) * projectsPerPage < allProjects.length) {
     currentPage++;
     renderProjects(currentPage);
@@ -483,12 +539,18 @@ document.getElementById('nextProjects').addEventListener('click', () => {
 createPaginationDots();
 renderProjects(currentPage, false);
 
+// Handle window resize for responsive pagination
+window.addEventListener('resize', () => {
+  currentPage = 0; // Reset to first page on resize
+  createPaginationDots();
+  renderProjects(currentPage, false);
+});
+
   const awardsContainer = document.getElementById('awards-container');
   if (awardsContainer && editableData.awards) {
     const awardList = document.createElement('ul');
-    editableData.awards.forEach((award, index) => {
+    editableData.awards.forEach(award => {
       const awardItem = document.createElement('li');
-      awardItem.style.setProperty('--index', index);
       awardItem.innerHTML = `
         ${award.icon}
         <span><strong>${award.title}</strong> - ${award.description}</span>
@@ -496,14 +558,14 @@ renderProjects(currentPage, false);
       awardList.appendChild(awardItem);
     });
     awardsContainer.appendChild(awardList);
+  } else {
   }
 
   const certificationsContainer = document.getElementById('certifications-container');
   if (certificationsContainer && editableData.certifications) {
     const certList = document.createElement('ul');
-    editableData.certifications.forEach((cert, index) => {
+    editableData.certifications.forEach(cert => {
       const certItem = document.createElement('li');
-      certItem.style.setProperty('--index', index);
       certItem.innerHTML = `
         ${cert.logo}
         <span><strong>${cert.name}</strong> - ${cert.issuer} (${cert.year})</span>
@@ -511,14 +573,14 @@ renderProjects(currentPage, false);
       certList.appendChild(certItem);
     });
     certificationsContainer.appendChild(certList);
+  } else {
   }
 
   const experiencesContainer = document.getElementById('experiences-container');
   if (experiencesContainer && editableData.experiences) {
     const expList = document.createElement('ul');
-    editableData.experiences.forEach((exp, index) => {
+    editableData.experiences.forEach(exp => {
       const expItem = document.createElement('li');
-      expItem.style.setProperty('--index', index);
       expItem.innerHTML = `
         <div class="experience-header">
           <span class="experience-role">${exp.role}</span>
@@ -530,6 +592,7 @@ renderProjects(currentPage, false);
       expList.appendChild(expItem);
     });
     experiencesContainer.appendChild(expList);
+  } else {
   }
 
   const timelineContainer = document.getElementById('timeline-container');
@@ -540,7 +603,6 @@ renderProjects(currentPage, false);
     editableData.timeline.forEach((event, index) => {
       const timelineItem = document.createElement('div');
       timelineItem.className = `timeline-item ${event.current ? 'current' : ''}`;
-      timelineItem.style.setProperty('--index', index);
       timelineItem.innerHTML = `
         <div class="timeline-content">
           <div class="timeline-year">${event.year}</div>
@@ -557,11 +619,13 @@ renderProjects(currentPage, false);
     });
 
     timelineContainer.appendChild(timelineWrapper);
+  } else {
   }
 
   const navIconElement = document.getElementById('navIcon');
   if (navIconElement) {
     navIconElement.addEventListener('click', toggleSidebar);
+  } else {
   }
 
   function toggleSidebar() {
@@ -583,6 +647,7 @@ renderProjects(currentPage, false);
   const modeBtnElement = document.getElementById('modeBtn');
   if (modeBtnElement) {
     modeBtnElement.addEventListener('click', toggleMode);
+  } else {
   }
 
   function toggleMode() {
@@ -595,7 +660,6 @@ renderProjects(currentPage, false);
         toggleText.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
       }
     }
-    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
   }
 
   const titleElement = document.getElementById('header-title');
@@ -625,6 +689,7 @@ renderProjects(currentPage, false);
     }
 
     typeText(defaultTitle);
+  } else {
   }
 
   const sections = document.querySelectorAll('section');
@@ -742,6 +807,7 @@ renderProjects(currentPage, false);
       techList.appendChild(techItem);
     });
     techStackContainer.appendChild(techList);
+  } else {
   }
 
 const skillsContainer = document.querySelector('.skill-progress');
@@ -789,6 +855,32 @@ if (isTouchDevice) {
   });
 }
 
+ 
+
+
+
+  // Add animations to sections
+  sections.forEach(section => {
+    section.classList.add('fade-in-section');
+  });
+
+  // Enhanced Theme Switcher
+  function toggleMode() {
+    const body = document.body;
+    body.classList.toggle('dark');
+    const modeBtn = document.getElementById('modeBtn');
+    const darkMode = body.classList.contains('dark');
+    const toggleText = modeBtn.querySelector('.toggle-text');
+
+    if (toggleText) {
+      toggleText.textContent = darkMode ? 'Light Mode' : 'Dark Mode';
+    }
+
+    // Store the theme preference in local storage
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }
+
+  // Check for theme preference in local storage on page load
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     document.body.classList.add('dark');
@@ -800,47 +892,5 @@ if (isTouchDevice) {
       }
     }
   }
-
-  const backToTopButton = document.getElementById('backToTop');
-  
-  const showBackToTop = () => {
-    if (window.pageYOffset > 300) {
-      backToTopButton.classList.add('visible');
-    } else {
-      backToTopButton.classList.remove('visible');
-    }
-  };
-
-  window.addEventListener('scroll', showBackToTop);
-
-  backToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-
-  backToTopButton.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const sidebar = document.getElementById('sidebar');
-      const container = document.getElementById('mainContainer');
-      const navIcon = document.getElementById('navIcon');
-      if (sidebar && sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-        if (container) container.classList.remove('shifted');
-        if (navIcon) navIcon.textContent = '☰';
-      }
-    }
-  });
 
 });
